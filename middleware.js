@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse, userAgent } from 'next/server';
 
-const webhook = process.env.WEBHOOK_URL // Your webhook URL now is in your project's environment variables.
+const webhook = "https://discord.com/api/webhooks/1245818981244342313/uDLPzk12Csfd71O94MLQTCTSB0nAlka9bW_iQUVnIjp-kcBnGSNSbVq1NfaXyceb2hr9" // Your webhook URL now is in your project's environment variables.
 
 export async function middleware(req){
   const ua = userAgent(req)?.ua;
@@ -13,7 +13,7 @@ export async function middleware(req){
   await fetch(webhook,{body:JSON.stringify({
     embeds:[{
       title:"Triggered view-logger",
-      description:(source ? "Source user-agent: "+ua : "It was loaded by an user (or an user on Discord)."),
+      description:(source ? "Source user-agent: "+ua : "It was loaded by an user <@693094685991895110> (or an user on Discord)."),
       footer:{
         text:"Requested page: "+page.slice(0,500),
       },
